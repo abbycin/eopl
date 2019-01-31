@@ -224,6 +224,7 @@
 (line)
 
 ;; Ex 1.29
+;; filter-in see Ex 1.22
 (define (sort loi)
   (if (null? loi)
       '()
