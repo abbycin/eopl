@@ -221,9 +221,28 @@
 (merge '(1 4) '(1 2 8))
 (merge '(35 62 81 90 91) '(3 83 85 90))
 
-        
+(line)
 
+;; Ex 1.29
+(define (sort loi)
+  (if (null? loi)
+      '()
+      (append (sort (filter-in (λ (x) (> (car loi) x)) (cdr loi)))
+              (list (car loi))
+              (sort (filter-in (λ (x) (not (> (car loi) x))) (cdr loi))))))
 
+(sort '(8 2 5 2 3))
 
+(line)
 
-   
+;; Ex 1.30
+(define (sort/pred pred loi)
+  (if (null? loi)
+      '()
+      (append (sort/pred pred (filter-in (λ (x) (pred (car loi) x)) (cdr loi)))
+              (list (car loi))
+              (sort/pred pred (filter-in (λ (x) (not (pred (car loi) x))) (cdr loi))))))
+(sort/pred < '(8 2 5 2 3))
+(sort/pred > '(8 2 5 2 3))
+
+;; Ex 1.31 ~ 1.36 seems like binary-mobile in SICP, skip.
